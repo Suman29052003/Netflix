@@ -98,7 +98,7 @@ const App = () => {
         </div>
 
         {/*Second Div*/}
-        <div className="h-[80vh]  border-t-[8px]  border-[#232323] border-b-0 flex  w-full justify-center ">
+        <div className="h-[85vh]  border-t-[8px]  border-[#232323] border-b-0 flex  w-full justify-center ">
           <div className="md:w-[80%]  flex md:flex-row flex-col w-full">
             <div className="text-white md:w-1/2 flex flex-col justify-center md:items-left items-center w-full">
               <p className="text-3xl mt-4 md:mt-0 md:text-5xl font-bold py-4 md:w-full text-left">
@@ -117,7 +117,7 @@ const App = () => {
         </div>
 
         {/* Third Div  */}
-        <div className="h-[80vh]  border-t-[8px] border-b-[0px] border-[#232323] flex  w-full justify-center ">
+        <div className="h-[87vh]  border-t-[8px] border-b-[0px] border-[#232323] flex  w-full justify-center ">
           <div className="md:w-[80%]  flex md:flex-row flex-col-reverse w-full">
             <div className="md:w-1/2 md:m-0 mt-5 flex flex-col justify-center items-center h-[56vh] md:h-auto">
               <img src={mobile} className="w-[24rem] h-[24rem] object-cover" />
