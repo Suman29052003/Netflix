@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import heroImg from "../public/images/hero.jpg";
 import logo from "../public/images/netflix-logo.png";
 import "./App.css";
@@ -29,25 +29,34 @@ const App = () => {
     },
   ];
 
+  const [querieState, setQuerieState] = useState("");
+  const [symbol, setSymbol] = useState(true);
+
+  // function handleClose(index){
+  //   if(querieState == index){
+
+  //   }
+  // }
+
   return (
     <>
       <div className="w-full">
         {/* Hero Section  */}
 
-        <div className={`hero w-full h-screen flex flex-col items-center `}>
+        <div
+          className={`hero w-full h-[60vh] md:h-screen flex flex-col items-center `}
+        >
           {/* NavBar  */}
           <div className="navbar w-full  flex justify-around">
             <div className="logo p-4">
-              
               {/* Nav Logo */}
               <img
                 src={logo}
                 alt=""
-                className="h-auto w-40 object-cover drop-shadow-lg"
+                className="h-auto md:w-40 w-28 object-cover drop-shadow-lg"
               />
             </div>
-            <div className="btn p-4 ">
-              
+            <div className="btn p-4 md:block flex ">
               {/* language and sign In buttons in Navbar  */}
               <button className="language bg-transparent border-2 border-gray-600 p-1 w-28 text-white rounded-md">
                 Language
@@ -60,23 +69,23 @@ const App = () => {
 
           {/* heading  */}
           <div className=" w-full text-center text-white h-[80vh] flex flex-col justify-center items-center ">
-            <h4 className="font-bold  text-5xl py-2">
+            <h4 className="font-bold  text-3xl md:text-5xl px-4 md:px-1 py-2">
               Unlimited movies, TV shows and more
             </h4>
-            <p className="py-2 text-xl font-semibold">
+            <p className="py-2 text-xl font-semibold text-[#b4b0b0]">
               Watch anywhere. Cancel anytime.
             </p>
-            <p className="py-2 text-xl font-semibold">
+            <p className="py-2 text-xl font-semibold md:w-full w-[80%] text-center text-[#b4b0b0]">
               Ready to watch? Enter your email to create or restart your
               membership.
             </p>
-            <div className="email w-full flex items-center justify-center">
+            <div className="email w-full flex md:flex-row flex-col items-center justify-center p-4">
               <input
                 type="email"
-                className="w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
+                className="w-[80%] md:w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
                 placeholder="Email Address"
               />
-              <div className="bg-red-700 p-4 m-2 rounded-sm w-[13%] text-2xl hover:bg-red-800 duration-900 cursor-pointer">
+              <div className="bg-red-700 p-4 m-2 rounded-sm w-[50%] md:w-[13%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white">
                 <p className="w-full flex  items-center justify-center">
                   Get Started
                   <span className="material-symbols-outlined  text-2xl font-normal">
@@ -158,47 +167,108 @@ const App = () => {
             </div>
             <div className="text-white md:w-1/2 flex flex-col justify-center md:items-left items-center w-full">
               <p className="text-3xl  md:mt-0 md:text-5xl font-bold py-4 md:w-full text-center md:text-left">
-                Watch everywhere
+                Create Profile For Kids
               </p>
               <p className="text-xl md:p-0 px-4 md:text-left font-semibold text-center">
-                Stream unlimited movies and TV shows on your phone, tablet,
-                laptop, and TV.
+                Send children on adventures with their favourite characters in a
+                space made just for them—free with your membership.
               </p>
             </div>
           </div>
         </div>
 
         {/* Query Section  */}
-        <div className="flex flex-col w-full items-center justify-center">
-          <p className="text-5xl text-white p-4 font-bold">Frequently Asked Questions</p>
+        <div className="flex flex-col w-full items-center justify-center border-2  border-[#232323]">
+          <p className="md:text-5xl text-white p-6 font-bold text-center text-3xl">
+            Frequently Asked Questions
+          </p>
           {queries.map((query, index) => {
             return (
-            <div className="w-[80%] h-[5rem] bg-[#333] mt-4 flex items-center justify-between text-white text-2xl font-semibold" key={index}>
-              <span className="px-4" >{query.query}</span>
-              <span className="material-symbols-outlined px-4">add</span>
-            </div>
-            )
+              <div
+                className="md:w-[80%] h-[5rem] bg-[#333] mt-4 flex items-center justify-between text-white text-lg w-[85%] md:text-2xl font-medium hover:bg-[#555454] ease-in duration-100"
+                key={index}
+              >
+                <span className="px-4">{query.query}</span>
+                {symbol === false ? (
+                  <span className="material-symbols-outlined px-4">add</span>
+                ) : (
+                  <span className="material-symbols-outlined px-4">close</span>
+                )}
+              </div>
+            );
           })}
 
-        <span className="text-white p-6 text-xl">Ready to watch? Enter your email to create or restart your membership.</span>
-        <div className="email w-full flex items-center justify-center p-4">
-              <input
-                type="email"
-                className="w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
-                placeholder="Email Address"
-              />
-              <div className="bg-red-700 p-4 m-2 rounded-sm w-[13%] text-2xl hover:bg-red-800 duration-900 cursor-pointer">
-                <p className="w-full flex  items-center justify-center">
-                  Get Started
-                  <span className="material-symbols-outlined  text-2xl font-normal">
-                    chevron_right
-                  </span>
-                </p>
-              </div>
+          <span className="text-white p-6 text-xl text-center w-full">
+            Ready to watch? Enter your email to create or restart your
+            membership.
+          </span>
+          <div className="email w-full flex md:flex-row flex-col items-center justify-center p-4">
+            <input
+              type="email"
+              className="w-[80%] md:w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
+              placeholder="Email Address"
+            />
+            <div className="bg-red-700 p-4 m-2 rounded-sm w-[50%] md:w-[13%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white">
+              <p className="w-full flex  items-center justify-center">
+                Get Started
+                <span className="material-symbols-outlined  text-2xl font-normal">
+                  chevron_right
+                </span>
+              </p>
             </div>
+          </div>
         </div>
 
-
+        {/* Footer Section  */}
+        <div className="h-[70vh]  border-t-[8px]  border-[#232323] border-b-[8px] flex flex-col  w-full items-center text-[#a5a4a2]">
+          <div className="flex w-[80%] justify-start py-8">
+            <h1 className="cursor-pointer">
+              Questions ?{" "}
+              <span className="underline">Call 000-800-919-1694</span>
+            </h1>
+          </div>
+          <div className="grid md:grid-cols-4 grid-cols-2 w-[80%] h-[10vh] md:h-[50vh] gap-5 text-sm">
+            <div className=" w-full h-auto flex justify-start">
+              <ul className="underline flex flex-col gap-4">
+                <li className="cursor-pointer">FAQ</li>
+                <li className="cursor-pointer">Investor Reltion</li>
+                <li className="cursor-pointer">Privacy</li>
+                <li className="cursor-pointer">Speed Test</li>
+                <button className="language bg-transparent border-2 border-gray-600 p-1 w-28 text-white rounded-md md:block hidden my-5 no-underline">
+                  Language
+                </button>
+                <span className="md:block hidden no-underline">Netflix India</span>
+              </ul>
+            </div>
+            <div className=" w-full h-auto flex justify-start">
+              <ul className="underline flex flex-col gap-4">
+                <li className="cursor-pointer">Help Center</li>
+                <li className="cursor-pointer">Jobs</li>
+                <li className="cursor-pointer">Cookies Reference</li>
+                <li className="cursor-pointer">Legal Notice</li>
+              </ul>
+            </div>
+            <div className=" w-full h-auto flex justify-start">
+              <ul className="underline flex flex-col gap-4">
+                <li className="cursor-pointer">Accounts</li>
+                <li className="cursor-pointer">Ways to Watch</li>
+                <li className="cursor-pointer">Corporate Information</li>
+                <li className="cursor-pointer">Only on Netflix</li>
+                <button className="language bg-transparent border-2 border-gray-600 p-1 w-28 text-white rounded-md md:hidden block my-5 no-underline">
+                  Language
+                </button>
+                <span className="md:hidden block no-underline">Netflix India</span>
+              </ul>
+            </div>
+            <div className=" w-full h-auto flex justify-start">
+              <ul className="underline flex flex-col gap-4">
+                <li className="cursor-pointer">Media Center</li>
+                <li className="cursor-pointer">Terms of Use</li>
+                <li className="cursor-pointer">Contact Us</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
