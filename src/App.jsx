@@ -7,6 +7,7 @@ import mobile from "../public/images/mobile.jpg";
 import strangerThings from "../public/images/strangerThings.png";
 import devicePile from "../public/images/device-pile-in.png";
 import children from "../public/images/children.png";
+import { NavLink } from "react-router-dom";
 const App = () => {
   useEffect(() => {
     const preventCopyPaste = (event) => {
@@ -61,9 +62,8 @@ const App = () => {
     <>
       <div className="w-full">
         {/* Hero Section  */}
-
         <div
-          className={`hero w-full h-[77vh] md:h-screen flex flex-col items-center bg-no-repeat`}
+          className={`hero w-full h-[77vh] md:h-[90vh] flex flex-col items-center bg-no-repeat`}
         >
           {/* NavBar  */}
           <div className="navbar w-full  flex justify-around">
@@ -76,13 +76,23 @@ const App = () => {
               />
             </div>
             <div className="btn p-4 md:block flex ">
-              {/* language and sign In buttons in Navbar  */}
-              <button className="language bg-transparent border-2 border-gray-600 p-1 w-28 text-white rounded-md">
-                Language
+              {/* language buttons in Navbar  */}
+              <button className="language bg-[#191919] bg-opacity-[68%] border-2 border-gray-600 p-1 w-28 text-white rounded-md inline-flex items-center justify-center">
+                <span class="material-symbols-outlined text-sm px-1">
+                  translate
+                </span>
+               <select name="" id="" className="bg-transparent border-0 outline-none">
+                <option selected className="text-black">English</option>
+                <option value="1" className="text-black">हिंदी</option>
+               </select>
+                
               </button>
+
+              {/* sign In buttons in Navbar  */}
+              <NavLink to="/Login">
               <button className="signIn bg-red-700 p-1 ml-4 w-20 rounded-md text-white hover:bg-red-800 duration-900">
                 Sign In
-              </button>
+              </button></NavLink>
             </div>
           </div>
 
@@ -205,32 +215,32 @@ const App = () => {
           {queries.map((query, index) => {
             return (
               <div className="flex flex-col w-full items-center">
-              <div
-                className="md:w-[80%] h-[5rem] bg-[#333] mt-4 flex items-center justify-between text-white text-lg w-[85%] md:text-2xl font-medium hover:bg-[#555454] ease-in duration-100"
-                key={index}
-                onClick={() =>
-                  setExpandQuery(expandQuery === index ? -1 : index)
-                }
-              >
-                <span className="px-4">{query.query}</span>
-                {expandQuery === index ? (
-                  <span className="material-symbols-outlined px-4">close</span>
-                ) : (
-                  <span className="material-symbols-outlined px-4">add</span>
+                <div
+                  className="md:w-[80%] h-[5rem] bg-[#333] mt-4 flex items-center justify-between text-white text-lg w-[85%] md:text-2xl font-medium hover:bg-[#555454] ease-in duration-100"
+                  key={index}
+                  onClick={() =>
+                    setExpandQuery(expandQuery === index ? -1 : index)
+                  }
+                >
+                  <span className="px-4">{query.query}</span>
+                  {expandQuery === index ? (
+                    <span className="material-symbols-outlined px-4">
+                      close
+                    </span>
+                  ) : (
+                    <span className="material-symbols-outlined px-4">add</span>
+                  )}
+                </div>
+                {expandQuery === index && (
+                  <div className="child bg-[#333] p-4 md:w-[80%] w-[85%]  mt-1">
+                    <p className="text-white text-lg md:text-xl">
+                      {query.answer}
+                    </p>
+                  </div>
                 )}
               </div>
-              {expandQuery === index && (
-              <div className="child bg-[#333] p-4 md:w-[80%] w-[85%]  mt-1">
-                <p className="text-white text-lg md:text-xl">
-                  {query.answer}
-                </p>
-              </div>
-            )}
-              </div>
             );
-            
           })}
-
 
           <span className="text-white p-6 text-xl text-center w-full">
             Ready to watch? Enter your email to create or restart your
