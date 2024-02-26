@@ -1,0 +1,38 @@
+{expandQuery === index && (
+              <div className="bg-[#444] p-4 md:w-[80%] w-[85%] rounded-lg mt-4">
+                <p className="text-white text-lg md:text-xl">
+                  {query.answer}
+                </p>
+              </div>
+            )}
+
+
+
+
+
+
+
+
+{queries.map((query, index) => {
+  return (
+    <div
+      className="md:w-[80%] h-[5rem] bg-[#333] mt-4 flex items-center justify-between text-white text-lg w-[85%] md:text-2xl font-medium hover:bg-[#555454] ease-in duration-100"
+      key={index}
+      onClick={() => setExpandedQuery(index === expandedQuery ? -1 : index)}
+    >
+      <span className="px-4">{query.query}</span>
+      {index === expandedQuery ? (
+        <span className="material-symbols-outlined px-4">close</span>
+      ) : (
+        <span className="material-symbols-outlined px-4">add</span>
+      )}
+      {index === expandedQuery && (
+        <div className="bg-[#444] p-4 md:w-[80%] w-[85%] rounded-lg mt-4">
+          <p className="text-white text-lg md:text-xl">
+            {query.answer}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+})}

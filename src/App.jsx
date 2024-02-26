@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import heroImg from "../public/images/hero.jpg";
 import logo from "../public/images/netflix-logo.png";
 import "./App.css";
@@ -8,51 +8,54 @@ import strangerThings from "../public/images/strangerThings.png";
 import devicePile from "../public/images/device-pile-in.png";
 import children from "../public/images/children.png";
 const App = () => {
-
   useEffect(() => {
     const preventCopyPaste = (event) => {
       event.preventDefault();
     };
-  
-    window.addEventListener('copy', preventCopyPaste);
-    window.addEventListener('paste', preventCopyPaste);
-  
+
+    window.addEventListener("copy", preventCopyPaste);
+    window.addEventListener("paste", preventCopyPaste);
+
     return () => {
-      window.removeEventListener('copy', preventCopyPaste);
-      window.removeEventListener('paste', preventCopyPaste);
+      window.removeEventListener("copy", preventCopyPaste);
+      window.removeEventListener("paste", preventCopyPaste);
     };
   }, []);
-
 
   const queries = [
     {
       query: "What is Netflix ?",
+      answer:
+        "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices. You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!",
     },
     {
       query: "How much does Netflix cost ?",
+      answer:
+        "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₹149 to ₹649 a month. No extra costs, no contracts.",
     },
     {
       query: "Where can I watch ?",
+      answer:
+        "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles. You can also download your favourite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.",
     },
     {
       query: "How do I Cancel ?",
+      answer:
+        "Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
     },
     {
       query: "What can I Watch on Netflix ?",
+      answer:
+        "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
     },
     {
       query: "Is Netflix good for kids ?",
+      answer:
+        "The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and films in their own space. Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.",
     },
   ];
 
-  const [querieState, setQuerieState] = useState("");
-  const [symbol, setSymbol] = useState(true);
-
-  // function handleClose(index){
-  //   if(querieState == index){
-
-  //   }
-  // }
+  const [expandQuery, setExpandQuery] = useState(-1);
 
   return (
     <>
@@ -101,14 +104,14 @@ const App = () => {
                 className="w-[80%] md:w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
                 placeholder="Email Address"
               />
-               <div className="bg-red-700 h-14 m-2 rounded-sm w-[60%] md:w-[21%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white flex  items-center justify-center ">
-              <p className="w-full flex  items-center justify-center ">
-                Get Started
-                <span className="material-symbols-outlined  text-2xl font-normal">
-                  chevron_right
-                </span>
-              </p>
-            </div>
+              <div className="bg-red-700 h-14 m-2 rounded-sm w-[60%] md:w-[21%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white flex  items-center justify-center ">
+                <p className="w-full flex  items-center justify-center ">
+                  Get Started
+                  <span className="material-symbols-outlined  text-2xl font-normal">
+                    chevron_right
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -198,21 +201,36 @@ const App = () => {
           <p className="md:text-5xl text-white p-6 font-bold text-center text-3xl">
             Frequently Asked Questions
           </p>
+
           {queries.map((query, index) => {
             return (
+              <div className="flex flex-col w-full items-center">
               <div
                 className="md:w-[80%] h-[5rem] bg-[#333] mt-4 flex items-center justify-between text-white text-lg w-[85%] md:text-2xl font-medium hover:bg-[#555454] ease-in duration-100"
                 key={index}
+                onClick={() =>
+                  setExpandQuery(expandQuery === index ? -1 : index)
+                }
               >
                 <span className="px-4">{query.query}</span>
-                {symbol === true ? (
-                  <span className="material-symbols-outlined px-4">add</span>
-                ) : (
+                {expandQuery === index ? (
                   <span className="material-symbols-outlined px-4">close</span>
+                ) : (
+                  <span className="material-symbols-outlined px-4">add</span>
                 )}
               </div>
+              {expandQuery === index && (
+              <div className="child bg-[#333] p-4 md:w-[80%] w-[85%]  mt-1">
+                <p className="text-white text-lg md:text-xl">
+                  {query.answer}
+                </p>
+              </div>
+            )}
+              </div>
             );
+            
           })}
+
 
           <span className="text-white p-6 text-xl text-center w-full">
             Ready to watch? Enter your email to create or restart your
@@ -253,7 +271,9 @@ const App = () => {
                 <button className="language bg-transparent border-2 border-gray-600 p-1 w-28 text-white rounded-md md:block hidden my-5 no-underline">
                   Language
                 </button>
-                <span className="md:block hidden no-underline">Netflix India</span>
+                <span className="md:block hidden no-underline">
+                  Netflix India
+                </span>
               </ul>
             </div>
             <div className=" w-full h-auto flex justify-start">
@@ -273,7 +293,9 @@ const App = () => {
                 <button className="language bg-transparent border-2 border-gray-600 p-1 w-28 text-white rounded-md md:hidden block my-5 no-underline">
                   Language
                 </button>
-                <span className="md:hidden block no-underline">Netflix India</span>
+                <span className="md:hidden block no-underline">
+                  Netflix India
+                </span>
               </ul>
             </div>
             <div className=" w-full h-auto flex justify-start">
