@@ -85,14 +85,14 @@ const App = () => {
                 className="w-[80%] md:w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
                 placeholder="Email Address"
               />
-              <div className="bg-red-700 p-4 m-2 rounded-sm w-[60%] md:w-[13%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white">
-                <p className="w-full flex  items-center justify-center">
-                  Get Started
-                  <span className="material-symbols-outlined  text-2xl font-normal">
-                    chevron_right
-                  </span>
-                </p>
-              </div>
+               <div className="bg-red-700 h-14 m-2 rounded-sm w-[60%] md:w-[21%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white flex  items-center justify-center ">
+              <p className="w-full flex  items-center justify-center ">
+                Get Started
+                <span className="material-symbols-outlined  text-2xl font-normal">
+                  chevron_right
+                </span>
+              </p>
+            </div>
             </div>
           </div>
         </div>
@@ -208,8 +208,8 @@ const App = () => {
               className="w-[80%] md:w-[25%] bg-gray-800 bg-opacity-50 border-2 border-gray-600 p-4 m-2 rounded-sm"
               placeholder="Email Address"
             />
-            <div className="bg-red-700 p-4 m-2 rounded-sm w-[60%] md:w-[13%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white">
-              <p className="w-full flex  items-center justify-center">
+            <div className="bg-red-700 h-14 m-2 rounded-sm w-[60%] md:w-[21%] text-2xl hover:bg-red-800 duration-900 cursor-pointer text-white flex  items-center justify-center ">
+              <p className="w-full flex  items-center justify-center ">
                 Get Started
                 <span className="material-symbols-outlined  text-2xl font-normal">
                   chevron_right
