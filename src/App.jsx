@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import heroImg from "../public/images/hero.jpg";
 import logo from "../public/images/netflix-logo.png";
 import "./App.css";
@@ -8,6 +8,22 @@ import strangerThings from "../public/images/strangerThings.png";
 import devicePile from "../public/images/device-pile-in.png";
 import children from "../public/images/children.png";
 const App = () => {
+
+  useEffect(() => {
+    const preventCopyPaste = (event) => {
+      event.preventDefault();
+    };
+  
+    window.addEventListener('copy', preventCopyPaste);
+    window.addEventListener('paste', preventCopyPaste);
+  
+    return () => {
+      window.removeEventListener('copy', preventCopyPaste);
+      window.removeEventListener('paste', preventCopyPaste);
+    };
+  }, []);
+
+
   const queries = [
     {
       query: "What is Netflix ?",
@@ -44,7 +60,7 @@ const App = () => {
         {/* Hero Section  */}
 
         <div
-          className={`hero w-full h-[77vh] md:h-screen flex flex-col items-center `}
+          className={`hero w-full h-[77vh] md:h-screen flex flex-col items-center bg-no-repeat`}
         >
           {/* NavBar  */}
           <div className="navbar w-full  flex justify-around">
@@ -189,7 +205,7 @@ const App = () => {
                 key={index}
               >
                 <span className="px-4">{query.query}</span>
-                {symbol === false ? (
+                {symbol === true ? (
                   <span className="material-symbols-outlined px-4">add</span>
                 ) : (
                   <span className="material-symbols-outlined px-4">close</span>
