@@ -8,7 +8,7 @@
 
 
 
-
+<div className="text-red-600  w-full py-1"><p className="flex"><span class="material-symbols-outlined mr-1">cancel</span>Please enter a valid email address or phone number.</p></div>
 
 
 

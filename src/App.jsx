@@ -127,7 +127,7 @@ const App = () => {
         </div>
 
         {/*Second Div*/}
-        <div className="h-[85vh]  border-t-[8px]  border-[#232323] border-b-0 flex  w-full justify-center ">
+        <div className=" gap-[40px] h-[85vh]  border-t-[8px]  border-[#232323] border-b-0 flex  w-full justify-center ">
           <div className="md:w-[80%]  flex md:flex-row flex-col w-full">
             <div className="text-white md:w-1/2 flex flex-col justify-center md:items-left items-center w-full">
               <p className="text-3xl mt-4 md:mt-0 md:text-5xl font-bold py-4 md:w-full text-left">
@@ -140,18 +140,18 @@ const App = () => {
             </div>
 
             <div className="md:w-1/2 md:m-0 mt-5 flex justify-center items-center">
-              <img src={tv} className="w-[24rem] h-[22rem]" />
+              <img src={tv} className="w-[24rem] h-[22rem] object-scale-down" />
             </div>
           </div>
         </div>
 
         {/* Third Div  */}
-        <div className="h-[87vh]  border-t-[8px] border-b-[0px] border-[#232323] flex  w-full justify-center ">
+        <div className=" gap-[40px] h-[87vh]  border-t-[8px] border-b-[0px] border-[#232323] flex  w-full justify-center ">
           <div className="md:w-[80%]  flex md:flex-row flex-col-reverse w-full">
             <div className="md:w-1/2 md:m-0 mt-5 flex flex-col justify-center items-center h-[56vh] md:h-auto">
-              <img src={mobile} className="w-[24rem] h-[24rem] object-cover" />
-              <div className="bg-[#000] w-[20rem] h-[6rem] relative top-[-8rem] rounded-lg border-2 border-[#565656] flex items-center">
-                <img src={strangerThings} alt="" className="w-[20%] p-2" />
+              <img src={mobile} className="w-[24rem] h-[24rem] object-scale-down" />
+              <div className="bg-[#000] w-[15rem] md:w-[16rem] h-[6rem] relative top-[-8rem] rounded-lg border-2 border-[#565656] flex items-center">
+                <img src={strangerThings} alt="" className="w-[20%] p-2 object-scale-down" />
                 <div className="text-white px-3">
                   <p className="text-md">Stranger Things</p>
                   <p className="text-sm text-blue-700">Downloding...</p>
@@ -171,7 +171,7 @@ const App = () => {
         </div>
 
         {/* Fourth Div  */}
-        <div className="h-[80vh]  border-t-[8px] border-b-[8px] border-[#232323]  flex  w-full justify-center ">
+        <div className=" gap-[40px] h-[80vh]  border-t-[8px] border-b-[8px] border-[#232323]  flex  w-full justify-center ">
           <div className="md:w-[80%]  flex md:flex-row flex-col w-full">
             <div className="text-white md:w-1/2 flex flex-col justify-center md:items-left items-center w-full py-4">
               <p className="text-3xl  md:mt-0 md:text-5xl font-bold py-4 md:w-full text-center md:text-left">
@@ -183,16 +183,16 @@ const App = () => {
               </p>
             </div>
             <div className="md:w-1/2 md:m-0 mt-5 flex flex-col justify-center items-center h-[56vh] md:h-auto">
-              <img src={devicePile} className="w-auto h-[60%] object-cover" />
+              <img src={devicePile} className="w-auto h-[60%] object-scale-down" />
             </div>
           </div>
         </div>
 
         {/* Fifth Div  */}
-        <div className="h-[80vh]  border-t-[0px] border-b-[8px] border-[#232323]  flex  w-full justify-center ">
+        <div className=" gap-[40px] h-[80vh]  border-t-[0px] border-b-[8px] border-[#232323]  flex  w-full justify-center ">
           <div className="md:w-[80%]  flex md:flex-row flex-col-reverse w-full">
             <div className="md:w-1/2 md:m-0 mt-5 flex flex-col justify-center items-center h-[56vh] md:h-auto">
-              <img src={children} className="w-auto h-[60%] object-cover" />
+              <img src={children} className="w-auto h-[60%] object-scale-down" />
             </div>
             <div className="text-white md:w-1/2 flex flex-col justify-center md:items-left items-center w-full">
               <p className="text-3xl  md:mt-0 md:text-5xl font-bold py-4 md:w-full text-center md:text-left">
@@ -264,7 +264,7 @@ const App = () => {
         </div>
 
         {/* Footer Section  */}
-        <div className="h-[80vh]  border-t-[8px]  border-[#232323] border-b-[8px] flex flex-col  w-full items-center text-[#a5a4a2]">
+        <div className="h-[78vh] md:h-[60vh]  border-t-[8px]  border-[#232323] border-b-[8px] flex flex-col  w-full items-center text-[#a5a4a2]">
           <div className="flex w-[80%] justify-start py-8">
             <h1 className="cursor-pointer">
               Questions ?{" "}
