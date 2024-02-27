@@ -61,7 +61,9 @@ function handlePassword(e){
                       type="email"
                       name=""
                       placeholder="Email or Phone Number"
-                      className="bg-[#333333] text-white w-full mt-6 p-3 rounded-md border border-gray-500 outline-none bg-opacity-[50%]"
+                      className={`bg-[#333333] text-white w-full mt-6 p-3 rounded-md border border-gray-500 outline-none bg-opacity-[50%] focus:placeholder:scale-75 focus:placeholder:relative focus:placeholder:top-[-10px]
+                      focus:placeholder:left-[-46px]
+                      focus:placeholder:transition ease ${emailError === true?"border-red-400":""}`}
                       onChange={handleEmail}
                     />
                   </div>
@@ -75,7 +77,9 @@ function handlePassword(e){
                       type="password"
                       name=""
                       placeholder="Password"
-                      className="bg-[#333333] text-white w-full mt-6 p-3 rounded-md border border-gray-500 outline-none bg-opacity-[50%]"
+                      className={`bg-[#333333] text-white w-full mt-6 p-3 rounded-md border border-gray-500 outline-none bg-opacity-[50%] focus:placeholder:scale-75 focus:placeholder:relative focus:placeholder:top-[-10px]
+                      focus:placeholder:left-[-46px]
+                      focus:placeholder:transition ease ${passwordError === true?"border-red-400":""}`}
                       onChange={handlePassword}
                     />
                   </div>
