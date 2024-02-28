@@ -8,9 +8,13 @@ This project is a clone of the Netflix homepage UI, built using React and Tailwi
 - **Modern UI Components:** Utilizes React for dynamic UI components and TailwindCSS for styling.
 - **Scalable Architecture:** The project is structured to be scalable, making the addition of new features straightforward.
 
+- **Google Authentication:** Allows users to sign in and register for a personalized experience. This feature utilizes Google's OAuth 2.0 API for authentication. To implement this feature, you can follow these steps:
+  1. Register your application on the Google Cloud Platform Console and obtain your client ID and secret.
+  2. Install the `react-google-login` package using npm or yarn.
+  3. Import the `GoogleLogin` component from the `react-google-login` package and include it in your application
+
 ### Upcoming Features
 
-- **User Authentication:** Ability to sign in and register for a personalized experience.
 - **Content Search and Filter:** Search functionality to easily find content, along with filter options.
 - **Favorite List:** Users will be able to mark content as favorite and view it in a separate list.
 
