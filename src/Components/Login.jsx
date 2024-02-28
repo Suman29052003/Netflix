@@ -1,35 +1,47 @@
 import React, { useState } from "react";
 import logo from "../../public/images/netflix-logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink,Navigate, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+
 
 const Login = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
-
-const [email,setEmail] = useState();
-const [password,setPassword] = useState();
-const [emailError,setEmailError] = useState(false);
-const [passwordError,setPasswordError] = useState(false);
-
-
-function handleEmail(e){
-setEmail(e.target.value);
-if(e.target.value.trim()===""){
-  setEmailError(true);
-}
-else{
-  setEmailError(false);
-}
-}
-
-function handlePassword(e){
-  setPassword(e.target.value);
-  if(e.target.value.trim()===""){
-    setPasswordError(true);
+  function handleEmail(e) {
+    setEmail(e.target.value);
+    if (e.target.value.trim() === "") {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
   }
-  else{
-    setPasswordError(false);
+
+  function handlePassword(e) {
+    setPassword(e.target.value);
+    if (e.target.value.trim() === "") {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+    }
   }
-}
+
+  const [isLoggedIn,setIsLoggedIn] = useState(false)
+  const navigate = useNavigate();
+
+  function handleLogInSuccess(response){
+    setIsLoggedIn(true);
+    console.log("Logged In" + response);
+   navigate("/movies")
+  }
+
+  function handleLogInFailure(response){
+    setIsLoggedIn(false);
+    console.log("Failure" + response)
+    
+  }
 
   return (
     <div className="bg-black md:hero">
@@ -42,7 +54,7 @@ function handlePassword(e){
             src={logo}
             alt=""
             className="h-auto md:w-40 w-28 object-cover drop-shadow-lg cursor-pointer"
-            onClick={()=>{
+            onClick={() => {
               window.location.reload();
             }}
           />
@@ -63,15 +75,25 @@ function handlePassword(e){
                       placeholder="Email or Phone Number"
                       className={`bg-[#333333] text-white w-full mt-6 p-3 rounded-md border border-gray-500 outline-none bg-opacity-[50%] focus:placeholder:scale-75 focus:placeholder:relative focus:placeholder:top-[-10px]
                       focus:placeholder:left-[-46px]
-                      focus:placeholder:transition ease ${emailError === true?"border-red-400":""}`}
+                      focus:placeholder:transition ease ${
+                        emailError === true ? "border-red-400" : ""
+                      }`}
                       onChange={handleEmail}
                     />
                   </div>
-                  {
-                      emailError === true?<div className="text-red-600  w-full py-1"><p className="flex"><span class="material-symbols-outlined mr-1">cancel</span>Please enter a valid email address or phone number.</p></div>:<></>
+                  {emailError === true ? (
+                    <div className="text-red-600  w-full py-1">
+                      <p className="flex">
+                        <span className="material-symbols-outlined mr-1">
+                          cancel
+                        </span>
+                        Please enter a valid email address or phone number.
+                      </p>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
 
-                  }
-                  
                   <div className="password">
                     <input
                       type="password"
@@ -79,34 +101,43 @@ function handlePassword(e){
                       placeholder="Password"
                       className={`bg-[#333333] text-white w-full mt-6 p-3 rounded-md border border-gray-500 outline-none bg-opacity-[50%] focus:placeholder:scale-75 focus:placeholder:relative focus:placeholder:top-[-10px]
                       focus:placeholder:left-[-46px]
-                      focus:placeholder:transition ease ${passwordError === true?"border-red-400":""}`}
+                      focus:placeholder:transition ease ${
+                        passwordError === true ? "border-red-400" : ""
+                      }`}
                       onChange={handlePassword}
                     />
                   </div>
 
-                  {
-                      passwordError === true?<div className="text-red-600  w-full py-1"><p className="flex"><span class="material-symbols-outlined mr-1">cancel</span>Please enter a valid email address or phone number.</p></div>:<></>
-
-                  }
-
+                  {passwordError === true ? (
+                    <div className="text-red-600  w-full py-1">
+                      <p className="flex">
+                        <span className="material-symbols-outlined mr-1">
+                          cancel
+                        </span>
+                        Please enter a valid email address or phone number.
+                      </p>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
-
                 <div className=" duration-150signinBtn w-full bg-red-700 hover:bg-red-800 p-3 flex items-center justify-center font-semibold text-lg text-white mt-10 rounded-md">
                   <span>Sign In</span>
                 </div>
-
                 <div className="text-[#9f9f9f] text-xl font-medium text-center py-4">
                   OR
                 </div>
-
-                <div className=" duration-150 w-full bg-[#736a67] hover:bg-[#423f3e] bg-opacity-[80%] p-3 flex items-center justify-center font-semibold text-lg text-white  rounded-md">
-                  <span>Use a Sign-in Code</span>
+                <div className=" duration-150 w-full  bg-opacity-[80%] p-3 flex items-center justify-center font-semibold text-lg text-white  rounded-md">
+                  <GoogleLogin className ="w-full  "
+                  onSuccess={handleLogInSuccess}
+                  onError={handleLogInFailure}
+                />
                 </div>
-
+                
+                ,
                 <div className="text-white w-full text-center p-3 cursor-pointer hover:underline">
                   <span>Forgot Password ?</span>
                 </div>
-
                 <div className="flex items-center justify-between">
                   <div className="checkbox my-4 ">
                     <input type="checkbox" className="p-2" />
@@ -120,7 +151,6 @@ function handlePassword(e){
                     </span>
                   </div>
                 </div>
-
                 <div className="newSignin w-full text-left mt-4">
                   <span className="text-[#9f9f9f9f]">New to Netflix ? </span>
                   <NavLink to="/">
@@ -129,7 +159,6 @@ function handlePassword(e){
                     </span>
                   </NavLink>
                 </div>
-
                 <div className="w-[100%] text-left text-[#9f9f9f9f] text-sm my-4">
                   <p>
                     This page is protected by Google reCAPTCHA to ensure you're
@@ -183,7 +212,7 @@ function handlePassword(e){
 
           <div className="btn">
             <button className="language bg-[#191919] bg-opacity-[68%] border-2 border-gray-600 p-1 w-28 text-white rounded-md inline-flex items-center justify-center">
-              <span class="material-symbols-outlined text-sm px-1">
+              <span className="material-symbols-outlined text-sm px-1">
                 translate
               </span>
               <select

@@ -36,3 +36,20 @@
     </div>
   );
 })}
+
+
+
+
+import { GoogleLogin } from '@react-oauth/google';
+
+<GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>;
+
+
+google authentication API key : AIzaSyD7ARoklijX7_Rg-FFQQ7qEOQeSZJt-m2k
